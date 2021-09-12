@@ -4,30 +4,41 @@ import com.bjpowernode.domain.Student;
 import com.bjpowernode.service.StudentService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Controller
 @RequestMapping(value = "/student")
 public class StudentController {
     @Resource
     private StudentService service;
-    //Íê³É×¢²áÑ§Éú
+    //å®Œæˆæ³¨å†Œå­¦ç”Ÿ
     @RequestMapping(value = "/addStudent.do")
     public ModelAndView addStudent(Student student){
         ModelAndView mv = new ModelAndView();
-        String tips = "×¢²áÊ§°Ü";
-        //µ÷ÓÃservice´¦Àístudent
+        String tips = "æ³¨å†Œå¤±è´¥";
+        //è°ƒç”¨serviceå¤„ç†student
         int nums = service.addStudent(student);
         if(nums > 0){
-            //×¢²á³É¹¦
-            tips = "Ñ§Éú¡¾" + student.getName() + "¡¿×¢²á³É¹¦";
+            //æ³¨å†ŒæˆåŠŸ
+            tips = "å­¦ç”Ÿã€" + student.getName() + "ã€‘æ³¨å†ŒæˆåŠŸ";
         }
-        //Ìí¼ÓÊı¾İ
+        //æ·»åŠ æ•°æ®
         mv.addObject("tips" ,tips);
-        //Ö¸¶¨½á¹ûÒ³Ãæ
+        //æŒ‡å®šç»“æœé¡µé¢
         mv.setViewName("result");
         return mv;
     }
-}//52
+
+    //å¤„ç†æŸ¥è¯¢ï¼Œå“åº”ajax
+    @RequestMapping("/queryStudent.do")
+    @ResponseBody
+    public List<Student> queryStudent(){
+        //å‚æ•°æ£€æŸ¥ï¼Œç®€å•çš„æ•°æ®å¤„ç†
+        List<Student> students = service.findStudents();
+        return students;
+    }
+}

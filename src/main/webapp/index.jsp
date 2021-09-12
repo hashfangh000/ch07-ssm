@@ -19,7 +19,7 @@
             <td><a href="addStudent.jsp">注册学生 </a></td>
         </tr>
         <tr>
-            <td>浏览学生</td>
+            <td><a href="listStudent.jsp">浏览学生</a></td>
         </tr>
     </table>
 </div>

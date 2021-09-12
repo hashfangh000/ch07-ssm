@@ -9,7 +9,7 @@ import javax.annotation.Resource;
 import java.util.List;
 @Service
 public class StudentServiceImpl implements StudentService {
-    //ÒýÓÃÀàÐÍµÄ×Ô¶¯×¢Èë@Autowired, @Resource
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Íµï¿½ï¿½Ô¶ï¿½×¢ï¿½ï¿½@Autowired, @Resource
     @Resource
     private StudentDao studentDao;
     @Override
@@ -22,4 +22,5 @@ public class StudentServiceImpl implements StudentService {
     public List<Student> findStudents() {
         return studentDao.selectStudents();
     }
+
 }
